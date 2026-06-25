@@ -1,0 +1,6 @@
+{
+  "name": "LeadCure AI",
+  "description": "LeadCure AI - Google Antigravity Agent Squad Pipeline for curing B2B lead lists and writing bespoke openers.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
