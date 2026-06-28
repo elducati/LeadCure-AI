@@ -129,17 +129,17 @@ function getGeminiClient(): GoogleGenAI {
 }
 
 // API: Get Leads
-app.get('/api/leads', (req, res) => {
+app.get(['/api/leads', '/leads'], (req, res) => {
   res.json({ leads: savedLeads });
 });
 
 // API: Get Logs
-app.get('/api/logs', (req, res) => {
+app.get(['/api/logs', '/logs'], (req, res) => {
   res.json({ logs: pipelineLogs });
 });
 
 // API: Config status
-app.get('/api/config', (req, res) => {
+app.get(['/api/config', '/config'], (req, res) => {
   const hasKey = !!process.env.GEMINI_API_KEY && process.env.GEMINI_API_KEY !== 'MY_GEMINI_API_KEY';
   res.json({
     hasApiKey: hasKey,
@@ -149,7 +149,7 @@ app.get('/api/config', (req, res) => {
 });
 
 // API: Reset Database
-app.post('/api/reset', (req, res) => {
+app.post(['/api/reset', '/reset'], (req, res) => {
   savedLeads = [
     {
       id: 'lead-1',
@@ -209,7 +209,7 @@ app.post('/api/reset', (req, res) => {
 });
 
 // API: Run Agents Pipeline
-app.post('/api/run-agents', async (req, res) => {
+app.post(['/api/run-agents', '/run-agents'], async (req, res) => {
   const { rawText, useSimulation = false } = req.body;
 
   if (!rawText || rawText.trim() === '') {
